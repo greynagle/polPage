@@ -15,19 +15,18 @@ function App() {
 class Grid extends React.Component {
   state = {press: true}
 
+  componentDidMount() {
+    var c = this.refs.test
+    var ctx = c.getContext("2d");
+    ctx.beginPath();
+    ctx.arc(95, 50, 40, 0, 2 * Math.PI);
+    ctx.stroke();
+    
+  }
   
   render() {
     return (
-      <button 
-        className={classname({
-          "buttonClass1":this.state.press,
-          "buttonClass2":!this.state.press
-        })}
-        onMouseDown={() => {this.setState(prevstate => ({press: !prevstate.press}))}}
-        onMouseUp={() => {this.setState(prevstate => ({press: !prevstate.press}))}}
-      >
-        Test
-      </button>
+        <canvas ref='test' height={500} width={900} />
     )
   }
 }
